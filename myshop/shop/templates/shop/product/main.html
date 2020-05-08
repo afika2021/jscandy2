@@ -1,0 +1,51 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+{% block content %}
+	<div class="slider_p">
+			<div id="slider-wrap">
+			    <div id="active-slide">
+			        <div id="slider">
+						<div class="slide"><a href="{% url 'shop:product_list' %}"><img src="{% static 'css/png/slaider_pupblick_1.jpg' %}" width="100%" height="100%"></a></div>
+			            <div class="slide"><img src="{% static 'css/png/slaider_pupblick_2.jpg' %}" width="100%" height="100%"></div>
+			            <div class="slide"><img src="{% static 'css/png/slaider_pupblick_3.jpg' %}" width="100%" height="100%"></div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+			<div class="rubrick">
+				<a class="rubrick_a" href="{% url 'shop:product_list' %}">
+	Popular categories in the store</a>
+			</div>
+			<div class="rubrick_main">
+				<a href="chocolate" class="rubrick_img"><img src="{% static 'css/png/rubrik-1.jpg' %}" width="100%" height="100%"></a>
+				<a href="candies" class="rubrick_img"><img src="{% static 'css/png/rubrik-2.jpg' %}" width="100%" height="100%"></a>
+				<a href="marmalade" class="rubrick_img"><img src="{% static 'css/png/rubrik-3.jpg' %}" width="100%" height="100%"></a>
+			</div>
+			<div class="Popular_p">
+				<a class="rubrick_a" href="{% url 'shop:product_new' %}">
+
+	New products in the store</a>
+			</div>
+			<div class="Popular_main">
+				<div id="slider-wrap_p">
+				    <div id="active-slide_p">
+				        <div id="slider_p">
+				            <div class="slide_p">
+								{% for product in products %}
+								            <div class="item">
+								                <a href="{{ product.get_absolute_url }}">
+								                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" style="    flex-shrink: 0; object-fit: contain; width: 100%; height: 200px">
+								                </a>
+								                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+								                ${{ product.price }}
+								            </div>
+								        {% endfor %}
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>{% block title %}My shop{% endblock %}</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/slider.css' %}">
+	<link rel="stylesheet"  href="{% static 'css/slider_p.css' %}">
+	<script src="{% static 'js/jquery_min.js' %}"></script>
+	<script src="{% static 'js/slider.js' %}" type="text/javascript"></script>
+	<script type="text/javascript" src="{% static 'js/slider_p.js' %}"></script>
+</head>
+<body>
+	<div class="bottom"></div>
+	<div class="main_tors">
+		<div class="register">
+			<div class="email">Admin@admin.ru</div>
+			<div class="login">Phone - 8-999-999-99-999</div>
+		</div>
+		<div class="catalog">
+			<div class="recv_1"><a href="{% url 'shop:product_new' %}" class="reca">New</a></div>
+			<div class="recv_2"><a href="{% url 'shop:product_list' %}" class="reca">Catalog</a></div>
+			<div class="recv_3"><a href="{% url 'shop:product_brends' %}" class="reca">Brends</a></div>
+			<div class="recv_4"><a href="{% url 'shop:product_sweets' %}" class="reca">About sweets</a></div>
+			<div class="recv_5"><a href="{% url 'shop:product_shop' %}" class="reca">About shop</a></div>
+		</div>
+		<div class="logo">
+			<img src="{% static 'css/png/logo_fon_2.png' %}" width="100%" height="190px">
+			<a href="{% url 'shop:product_main' %}"><img src="{% static 'css/png/logo.png' %}"  class="logo_p"></a>
+		</div>
+		<div id="subheader">
+    <div class="cart">
+		 {% with total_items=cart|length %}
+		        {% if cart|length > 0 %}
+		            Your cart:
+		            <a href="{% url 'cart:cart_detail' %}">
+		                {{ total_items }} item{{ total_items|pluralize }},
+		                ${{ cart.get_total_price }}
+		            </a>
+		        {% else %}
+		            Your cart is empty.
+		        {% endif %}
+		    {% endwith %}
+    </div>
+</div>
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+	<div class="footer">
+		<div class="information">
+			<h1>О магазине</h1>
+      		 <p>Этот проект является Курсовой работой студента СТМИиТ. Все что есть на сайте является демонстрацией знаний. Сайт не имеет торговых соглашений и связи с нологовой, так что сайт имеет только демонстративный характер.</p>
+		</div>
+		<div class="contacts">
+			<p>Email : Admin@admin.ru</p>
+			<p>Phone : 8-999-999-99-999</p>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

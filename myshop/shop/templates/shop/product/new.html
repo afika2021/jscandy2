@@ -1,0 +1,21 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}New products{% endif %}
+{% endblock %}
+{% block content %}
+<div class="new_body">
+    <div id="main_n" class="product-list">
+        {% for product in products %}
+            <div class="item">
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" style="    flex-shrink: 0; object-fit: contain; width: 100%; height: 200px">
+                </a>
+                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+                ${{ product.price }}
+            </div>
+        {% endfor %}
+         {% include "shop/product/pagination.html" with page=products %} 
+    </div>
+</div>
+{% endblock %}

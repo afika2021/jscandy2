@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+
+
+#slider-wrap_p{ 
+
+
+  left: 0%;
+  top: 0;
+  width: 100%;
+  height: 300px;
+  z-index: 41;
+    margin: 0 auto;
+}
+
+#active-slide_p{
+    width: 100%;
+    height: 90%;
+    display: table;
+    position: relative;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#slider_p{
+    position: relative;
+    width: calc(100% * 3);
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    -webkit-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+}
+
+.slide_p{
+    width: calc(100%/3);
+    height: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-content: space-around;
+    list-style: none;
+    float: left;
+}
+
+.slide_p img {
+    width:100%;
+    height: 100%;
+}
+
+.Radio-But_p{
+    margin-top:10px;
+    text-align:center;
+}
+
+.Radio-But_p .ctrl-select_p {
+    margin:2px;
+    display:inline-block;
+    width:16px;
+    height:16px;
+    overflow:hidden;
+    text-indent:-9999px;
+    background:url('png/arrow.png') center bottom no-repeat;
+}
+
+.Radio-But_p .ctrl-select_p:hover {
+    cursor:pointer;
+    background-position:center center;
+}
+
+.Radio-But_p .ctrl-select.active_p {
+    background-position:center top;
+}
+
+#prewbutton_p, #nextbutton_p {
+    display:block;
+    width:40px;
+    height:265px;
+    position:absolute;
+    top:0;
+    overflow:show;
+    text-indent:-999px;
+
+    opacity:1   ;
+    z-index:3;
+    outline:none !important;
+}
+
+#prewbutton_p {
+    left:10px;
+    transform: rotate(180deg);
+}
+
+#nextbutton_p {
+    right:10px;
+
+}
+
+#prewbutton_p:hover, #nextbutton_p:hover {
+    opacity:1;
+}
